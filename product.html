@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PowerHub – All Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #0F172A;
+            --secondary: #F59E0B;
+            --accent: #10B981;
+            --bg: #F8FAFC;
+            --card: #FFFFFF;
+            --text: #1E293B;
+            --text-light: #64748B;
+            --shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+            --shadow-hover: 0 20px 60px rgba(15, 23, 42, 0.15);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.3rem;
+            color: var(--primary);
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            padding: 0 24px;
+        }
+        .header.scrolled {
+            background: rgba(15, 23, 42, 0.97);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .logo i {
+            color: var(--secondary);
+            font-size: 1.8rem;
+        }
+        .logo span {
+            color: var(--secondary);
+        }
+
+        /* ---- desktop nav ---- */
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav a {
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+        .nav a:hover,
+        .nav a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .nav a.active {
+            color: var(--secondary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+        .header-actions button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 50px;
+            transition: var(--transition);
+            position: relative;
+        }
+        .header-actions button:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+        .cart-btn {
+            position: relative;
+        }
+        .cart-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--secondary);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translate(6px, -6px);
+            transition: var(--transition);
+        }
+        .shop-now-btn {
+            background: var(--secondary) !important;
+            color: #fff !important;
+            padding: 10px 24px !important;
+            border-radius: 50px !important;
+            font-weight: 700 !important;
+            font-size: 0.9rem !important;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.4), 0 4px 15px rgba(245, 158, 11, 0.3) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+        }
+        .shop-now-btn:hover {
+            background: #d97706 !important;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 35px rgba(245, 158, 11, 0.6), 0 8px 30px rgba(245, 158, 11, 0.4) !important;
+        }
+        @media (max-width: 768px) {
+            .shop-now-btn {
+                padding: 8px 14px !important;
+                font-size: 0.75rem !important;
+            }
+            .shop-now-btn span {
+                display: none;
+            }
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+
+        .search-bar {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.97);
+            backdrop-filter: blur(12px);
+            padding: 16px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .search-bar.open {
+            display: block;
+        }
+        .search-bar input {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: block;
+            padding: 14px 20px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        .search-bar input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
+        }
+
+        /* ===== MOBILE MENU (slide from right) ===== */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        .mobile-menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 320px;
+            max-width: 85vw;
+            background: var(--primary);
+            z-index: 1501;
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+            padding: 0;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            flex-shrink: 0;
+        }
+        .mobile-menu-header .logo-sm {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: #fff;
+        }
+        .mobile-menu-header .logo-sm i {
+            color: var(--secondary);
+        }
+        .mobile-menu-header .logo-sm span {
+            color: var(--secondary);
+        }
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            padding: 4px 8px;
+            transition: var(--transition);
+        }
+        .mobile-menu-close:hover {
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        .mobile-nav {
+            padding: 16px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .mobile-nav a {
+            padding: 14px 16px;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .mobile-nav a i {
+            width: 22px;
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .mobile-nav a.active {
+            color: var(--secondary);
+        }
+        .mobile-nav .nav-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.06);
+            margin: 8px 0;
+        }
+        .mobile-nav .nav-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: rgba(255, 255, 255, 0.25);
+            padding: 12px 16px 6px;
+        }
+
+        .mobile-menu-footer {
+            padding: 16px 24px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            flex-shrink: 0;
+        }
+        .mobile-menu-footer .social {
+            display: flex;
+            gap: 12px;
+        }
+        .mobile-menu-footer .social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.6);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        .mobile-menu-footer .social a:hover {
+            background: var(--secondary);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ===== HERO MINI ===== */
+        .hero-mini {
+            padding: 120px 0 50px;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-mini::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.12), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-mini .container {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-mini h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeUp 1s ease forwards 0.3s;
+        }
+        .hero-mini h1 span {
+            color: var(--secondary);
+            display: inline-block;
+            animation: heroPulse 3s ease-in-out infinite 1.5s;
+        }
+        .hero-mini p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroFadeUp 0.9s ease forwards 0.6s;
+        }
+        @keyframes heroFadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes heroPulse {
+            0%,
+            100% {
+                text-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+                transform: scale(1);
+            }
+            50% {
+                text-shadow: 0 0 40px rgba(245, 158, 11, 0.4), 0 0 80px rgba(245, 158, 11, 0.1);
+                transform: scale(1.02);
+            }
+        }
+
+        /* ===== FILTER BAR ===== */
+        .filter-bar {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 18px 22px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+        .filter-bar .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .filter-bar .filter-group button {
+            padding: 5px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            background: transparent;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .filter-bar .filter-group button:hover {
+            background: rgba(245, 158, 11, 0.08);
+            color: var(--primary);
+        }
+        .filter-bar .filter-group button.active {
+            background: var(--secondary);
+            color: #fff;
+            border-color: var(--secondary);
+        }
+        .filter-bar .right-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .filter-bar .result-count {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .filter-bar .sort-select {
+            padding: 6px 14px;
+            border-radius: 50px;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text);
+            background: var(--card);
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* ===== PRODUCTS GRID ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            width: 100%;
+        }
+
+        .product-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(15, 23, 42, 0.04);
+            position: relative;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .product-card .image-wrap {
+            position: relative;
+            overflow: hidden;
+            padding-top: 75%;
+            background: #f1f5f9;
+            min-height: 120px;
+        }
+        .product-card .image-wrap img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            transition: var(--transition);
+        }
+        .product-card:hover .image-wrap img {
+            transform: scale(1.06);
+        }
+        .product-card .quick-view-btn {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(6px);
+            color: #fff;
+            border: none;
+            padding: 7px 16px;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            cursor: pointer;
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .product-card:hover .quick-view-btn {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .product-card .quick-view-btn:hover {
+            background: var(--secondary);
+        }
+        .product-card .body {
+            padding: 14px 16px 16px;
+        }
+        .product-card .category-tag {
+            font-size: 0.65rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        .product-card .product-name {
+            font-weight: 600;
+            font-size: 0.92rem;
+            margin: 3px 0 5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 2.4rem;
+        }
+        .product-card .rating {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 0.75rem;
+            color: var(--secondary);
+        }
+        .product-card .rating span {
+            color: var(--text-light);
+            margin-left: 3px;
+            font-size: 0.7rem;
+        }
+        .product-card .price {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin: 5px 0 10px;
+        }
+        .product-card .actions {
+            display: flex;
+            gap: 6px;
+        }
+        .product-card .actions .add-cart {
+            flex: 1;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 8px 0;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .product-card .actions .add-cart:hover {
+            background: var(--secondary);
+        }
+        .product-card .actions .add-cart.added {
+            background: var(--accent);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .slide-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== PAGINATION ===== */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .pagination button {
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            background: var(--card);
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--text);
+            cursor: pointer;
+            transition: var(--transition);
+            min-width: 40px;
+        }
+        .pagination button:hover:not(:disabled):not(.active) {
+            background: rgba(245, 158, 11, 0.08);
+        }
+        .pagination button.active {
+            background: var(--secondary);
+            color: #fff;
+            border-color: var(--secondary);
+        }
+        .pagination button:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        /* ===== BRANDS ===== */
+        .brands-slider {
+            overflow: hidden;
+            padding: 18px 0;
+            position: relative;
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .brands-track {
+            display: flex;
+            gap: 50px;
+            animation: scrollBrands 25s linear infinite;
+            width: max-content;
+        }
+        .brands-track .brand-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            padding: 6px 18px;
+            border-radius: 50px;
+            background: rgba(15, 23, 42, 0.03);
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+        .brands-track .brand-item i {
+            font-size: 1.6rem;
+            color: var(--secondary);
+        }
+        .brands-track .brand-item:hover {
+            background: rgba(245, 158, 11, 0.08);
+            color: var(--primary);
+        }
+        @keyframes scrollBrands {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 60px 0 0;
+            margin-top: 40px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .footer .logo {
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .footer .about-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            max-width: 320px;
+        }
+        .footer h5 {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 16px;
+        }
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+        .footer ul li a {
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .footer ul li a:hover {
+            color: var(--secondary);
+            padding-left: 4px;
+        }
+        .footer .social {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .footer .social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        .footer .social a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        .footer .bottom {
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ===== CART DRAWER ===== */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        .cart-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 420px;
+            max-width: 90vw;
+            height: 100%;
+            background: var(--card);
+            z-index: 2001;
+            transform: translateX(100%);
+            transition: var(--transition);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-drawer.open {
+            transform: translateX(0);
+        }
+        .cart-drawer .drawer-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-drawer .drawer-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .cart-drawer .drawer-header .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+            padding: 4px 8px;
+        }
+        .cart-drawer .drawer-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 24px;
+        }
+        .cart-drawer .drawer-body .empty-msg {
+            text-align: center;
+            padding: 60px 0;
+            color: var(--text-light);
+        }
+        .cart-drawer .drawer-body .empty-msg i {
+            font-size: 3rem;
+            color: var(--text-light);
+            opacity: 0.3;
+            margin-bottom: 12px;
+        }
+        .cart-item {
+            display: flex;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+            align-items: center;
+        }
+        .cart-item img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            flex-shrink: 0;
+        }
+        .cart-item .info {
+            flex: 1;
+        }
+        .cart-item .info .name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .cart-item .info .price {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        .cart-item .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 4px;
+        }
+        .cart-item .qty-control button {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid rgba(15, 23, 42, 0.1);
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .cart-item .qty-control button:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+        .cart-item .qty-control .qty {
+            font-weight: 600;
+            min-width: 24px;
+            text-align: center;
+        }
+        .cart-item .remove-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+            padding: 4px 8px;
+        }
+        .cart-item .remove-btn:hover {
+            color: #ef4444;
+        }
+        .cart-drawer .drawer-footer {
+            padding: 16px 24px 24px;
+            border-top: 1px solid rgba(15, 23, 42, 0.06);
+        }
+        .cart-drawer .drawer-footer .subtotal {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+        }
+        .cart-drawer .drawer-footer .btns {
+            display: flex;
+            gap: 10px;
+        }
+        .cart-drawer .drawer-footer .btns button {
+            flex: 1;
+            padding: 12px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        .cart-drawer .drawer-footer .btns .continue-btn {
+            background: rgba(15, 23, 42, 0.06);
+            color: var(--text);
+        }
+        .cart-drawer .drawer-footer .btns .continue-btn:hover {
+            background: rgba(15, 23, 42, 0.12);
+        }
+        .cart-drawer .drawer-footer .btns .checkout-btn {
+            background: var(--secondary);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+        .cart-drawer .drawer-footer .btns .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4);
+        }
+
+        /* ===== QUICK VIEW ===== */
+        .qv-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(6px);
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .qv-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .qv-modal {
+            background: var(--card);
+            border-radius: var(--radius);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 32px 36px;
+            position: relative;
+            transform: scale(0.92) translateY(20px);
+            transition: var(--transition);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+        }
+        .qv-overlay.open .qv-modal {
+            transform: scale(1) translateY(0);
+        }
+        .qv-modal .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+            z-index: 1;
+        }
+        .qv-modal .close-btn:hover {
+            color: var(--text);
+            transform: rotate(90deg);
+        }
+        .qv-modal .qv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+        .qv-modal .qv-grid .qv-image img {
+            width: 100%;
+            border-radius: var(--radius-sm);
+            object-fit: contain;
+            aspect-ratio: 1/1;
+            background: #f1f5f9;
+        }
+        .qv-modal .qv-grid .qv-info h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        .qv-modal .qv-grid .qv-info .qv-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 6px 0 8px;
+        }
+        .qv-modal .qv-grid .qv-info .qv-rating {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        .qv-modal .qv-grid .qv-info .qv-availability {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .qv-modal .qv-grid .qv-info .qv-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .qv-modal .qv-grid .qv-info .qv-qty {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .qv-modal .qv-grid .qv-info .qv-qty .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .qv-modal .qv-grid .qv-info .qv-qty .qty-control button {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid rgba(15, 23, 42, 0.1);
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        .qv-modal .qv-grid .qv-info .qv-qty .qty-control button:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+        .qv-modal .qv-grid .qv-info .qv-qty .qty-control .qty {
+            font-weight: 600;
+            min-width: 32px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .qv-modal .qv-grid .qv-info .qv-add-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 50px;
+            border: none;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .qv-modal .qv-grid .qv-info .qv-add-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: #fff;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .scroll-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.5);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1200px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .qv-modal .qv-grid {
+                grid-template-columns: 1fr;
+            }
+            .qv-modal .qv-grid .qv-image img {
+                aspect-ratio: 1/1;
+                max-height: 280px;
+            }
+            .hero-mini h1 {
+                font-size: 2.4rem;
+            }
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .filter-bar .filter-group {
+                justify-content: center;
+            }
+            .filter-bar .right-group {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* ---- hide desktop nav ---- */
+            .nav {
+                display: none !important;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            .hero-mini h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .cart-drawer {
+                width: 100%;
+                max-width: 100%;
+            }
+            .filter-bar .filter-group button {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
+            .filter-bar .result-count {
+                font-size: 0.75rem;
+            }
+            .filter-bar .sort-select {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+            .product-card .product-name {
+                font-size: 0.8rem;
+                min-height: 2rem;
+            }
+            .product-card .price {
+                font-size: 0.9rem;
+            }
+            .product-card .actions .add-cart {
+                font-size: 0.65rem;
+                padding: 6px 0;
+            }
+
+            /* mobile menu adjustments */
+            .mobile-menu {
+                width: 300px;
+                max-width: 80vw;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .hero-mini h1 {
+                font-size: 1.6rem;
+            }
+            .container {
+                padding: 0 14px;
+            }
+            .section-padding {
+                padding: 50px 0;
+            }
+            .qv-modal {
+                padding: 20px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                text-align: center;
+            }
+            .footer .about-text {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .footer .social {
+                justify-content: center;
+            }
+            .footer .logo {
+                justify-content: center;
+            }
+            .footer ul li a {
+                display: inline-block;
+            }
+            .footer ul li {
+                text-align: center;
+            }
+            .footer h5 {
+                text-align: center;
+            }
+            .mobile-menu {
+                width: 280px;
+                max-width: 80vw;
+            }
+            .filter-bar {
+                padding: 12px 14px;
+            }
+            .filter-bar .filter-group {
+                gap: 4px;
+            }
+            .filter-bar .filter-group button {
+                font-size: 0.65rem;
+                padding: 3px 8px;
+            }
+            .pagination button {
+                padding: 6px 12px;
+                font-size: 0.75rem;
+                min-width: 34px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .product-card .body {
+                padding: 12px 12px 14px;
+            }
+            .product-card .product-name {
+                font-size: 0.75rem;
+                min-height: 1.8rem;
+            }
+            .product-card .price {
+                font-size: 0.8rem;
+            }
+            .product-card .actions .add-cart {
+                font-size: 0.6rem;
+                padding: 5px 0;
+            }
+            .header-inner {
+                height: 64px;
+            }
+            .logo {
+                font-size: 1.2rem;
+            }
+            .logo i {
+                font-size: 1.4rem;
+            }
+            .header-actions button {
+                padding: 6px 8px;
+                font-size: 1rem;
+            }
+            .shop-now-btn {
+                padding: 6px 10px !important;
+                font-size: 0.65rem !important;
+            }
+            .hero-mini h1 {
+                font-size: 1.3rem;
+            }
+            .hero-mini p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="./index.html" class="logo"><i class="fas fa-bolt"></i>Power<span>Hub</span></a>
+
+            <!-- desktop nav -->
+            <nav class="nav" id="nav">
+                <a href="./index.html">Home</a>
+                <a href="./product.html" class="active">Products</a>
+                <a href="./About.html">About</a>
+                <a href="./contact.html">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="search-toggle" id="searchToggle"><i class="fas fa-search"></i></button>
+                <button class="cart-btn" id="cartToggle">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                <button class="shop-now-btn" id="shopNowBtn"><i class="fas fa-bolt"></i> <span>Shop Now</span></button>
+                <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+
+        <!-- search bar -->
+        <div class="search-bar" id="searchBar">
+            <input type="text" id="searchInput" placeholder="Search products..." />
+        </div>
+    </header>
+
+    <!-- ===== MOBILE MENU (slide from right) ===== -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="logo-sm"><i class="fas fa-bolt"></i>Power<span>Hub</span></span>
+            <button class="mobile-menu-close" id="mobileMenuClose"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="./index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="./product.html" class="active"><i class="fas fa-box"></i> Products</a>
+            <a href="./About.html"><i class="fas fa-info-circle"></i> About</a>
+            <a href="./contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            <div class="nav-divider"></div>
+            <div class="nav-label">Categories</div>
+            <a href="#" data-filter="Solar"><i class="fas fa-sun"></i> Solar</a>
+            <a href="#" data-filter="Electrical"><i class="fas fa-bolt"></i> Electrical</a>
+            <a href="#" data-filter="Hardware"><i class="fas fa-tools"></i> Hardware</a>
+            <a href="#" data-filter="Plumbing"><i class="fas fa-faucet"></i> Plumbing</a>
+            <a href="#" data-filter="Home Essentials"><i class="fas fa-home"></i> Home Essentials</a>
+            <a href="#" data-filter="Lighting"><i class="fas fa-lightbulb"></i> Lighting</a>
+            <a href="#" data-filter="Tools"><i class="fas fa-wrench"></i> Tools</a>
+            <a href="#" data-filter="Safety"><i class="fas fa-shield-alt"></i> Safety</a>
+        </nav>
+        <div class="mobile-menu-footer">
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HERO MINI ===== -->
+    <section class="hero-mini" id="hero">
+        <div class="container">
+            <h1>All <span>Products</span></h1>
+            <p>Explore our complete collection of 150+ premium electrical, hardware, solar, plumbing and home essentials.</p>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCTS SECTION ===== -->
+    <section class="section-padding" id="products" style="padding-top:30px;">
+        <div class="container">
+            <!-- Filter Bar -->
+            <div class="filter-bar fade-up">
+                <div class="filter-group" id="categoryFilters">
+                    <button class="active" data-filter="all">All</button>
+                    <button data-filter="Solar">Solar</button>
+                    <button data-filter="Electrical">Electrical</button>
+                    <button data-filter="Hardware">Hardware</button>
+                    <button data-filter="Plumbing">Plumbing</button>
+                    <button data-filter="Home Essentials">Home Essentials</button>
+                    <button data-filter="Lighting">Lighting</button>
+                    <button data-filter="Tools">Tools</button>
+                    <button data-filter="Safety">Safety</button>
+                </div>
+                <div class="right-group">
+                    <span class="result-count" id="resultCount">150 products</span>
+                    <select class="sort-select" id="sortSelect">
+                        <option value="default">Sort by</option>
+                        <option value="price-low">Price: Low → High</option>
+                        <option value="price-high">Price: High → Low</option>
+                        <option value="rating">Top Rated</option>
+                        <option value="name">Name A–Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid"></div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </section>
+
+    <!-- ===== BRANDS ===== -->
+    <section class="section-padding" style="padding-top:0;">
+        <div class="container">
+            <h2 class="section-title fade-up">Trusted Brands</h2>
+            <p class="section-subtitle fade-up">Partnering with industry leaders</p>
+            <div class="brands-slider fade-up">
+                <div class="brands-track">
+                    <div class="brand-item"><i class="fas fa-bolt"></i> Philips</div>
+                    <div class="brand-item"><i class="fas fa-microchip"></i> Osaka</div>
+                    <div class="brand-item"><i class="fas fa-gear"></i> Schneider</div>
+                    <div class="brand-item"><i class="fas fa-plug"></i> Havells</div>
+                    <div class="brand-item"><i class="fas fa-broadcast"></i> Panasonic</div>
+                    <div class="brand-item"><i class="fas fa-bolt"></i> Philips</div>
+                    <div class="brand-item"><i class="fas fa-microchip"></i> Osaka</div>
+                    <div class="brand-item"><i class="fas fa-gear"></i> Schneider</div>
+                    <div class="brand-item"><i class="fas fa-plug"></i> Havells</div>
+                    <div class="brand-item"><i class="fas fa-broadcast"></i> Panasonic</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="./index.html" class="logo"><i class="fas fa-bolt"></i>Power<span>Hub</span></a>
+                    <p class="about-text">Your trusted partner for premium electrical, hardware, solar, plumbing and home improvement products. Quality you can rely on.</p>
+                    <div class="social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div><h5>Quick Links</h5><ul><li><a href="./index.html">Home</a></li><li><a href="./product.html">Products</a></li><li><a href="./About.html">About</a></li><li><a href="#contact">Contact</a></li></ul></div>
+                <div><h5>Categories</h5><ul><li><a href="#" data-filter="Solar">Solar</a></li><li><a href="#" data-filter="Electrical">Electrical</a></li><li><a href="#" data-filter="Hardware">Hardware</a></li><li><a href="#" data-filter="Plumbing">Plumbing</a></li><li><a href="#" data-filter="Home Essentials">Home Essentials</a></li></ul></div>
+                <div><h5>Contact</h5><ul><li><i class="fas fa-phone" style="width:20px;"></i> +1 (555) 123-4567</li><li><i class="fas fa-envelope" style="width:20px;"></i> support@powerhub.com</li><li><i class="fas fa-map-marker-alt" style="width:20px;"></i> 123 Main St, NY 10001</li></ul></div>
+            </div>
+            <div class="bottom">&copy; 2026 PowerHub. All rights reserved. Made with <i class="fas fa-heart" style="color:var(--secondary);"></i></div>
+        </div>
+    </footer>
+
+    <!-- ===== CART DRAWER ===== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="drawer-header">
+            <h3><i class="fas fa-shopping-cart" style="color:var(--secondary);"></i> Your Cart</h3>
+            <button class="close-btn" id="cartClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="drawer-body" id="cartBody">
+            <div class="empty-msg">
+                <i class="fas fa-cart-plus"></i>
+                <p>Your cart is empty.</p>
+                <p style="font-size:0.85rem;">Start shopping to add items.</p>
+            </div>
+        </div>
+        <div class="drawer-footer" id="cartFooter" style="display:none;">
+            <div class="subtotal"><span>Subtotal</span><span id="cartSubtotal">PKR 0</span></div>
+            <div class="btns">
+                <button class="continue-btn" id="cartContinue">Continue Shopping</button>
+                <button class="checkout-btn" id="cartCheckout">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== QUICK VIEW ===== -->
+    <div class="qv-overlay" id="qvOverlay">
+        <div class="qv-modal">
+            <button class="close-btn" id="qvClose"><i class="fas fa-times"></i></button>
+            <div class="qv-grid">
+                <div class="qv-image"><img id="qvImage" src="" alt="Product" /></div>
+                <div class="qv-info">
+                    <h2 id="qvName">Product Name</h2>
+                    <div class="qv-price" id="qvPrice">PKR 0</div>
+                    <div class="qv-rating" id="qvRating"><i class="fas fa-star"></i> 0.0 (0)</div>
+                    <div class="qv-availability" id="qvAvailability"><i class="fas fa-check-circle"></i> In Stock</div>
+                    <p class="qv-desc" id="qvDesc">Product description.</p>
+                    <div class="qv-qty">
+                        <label>Quantity:</label>
+                        <div class="qty-control">
+                            <button id="qvQtyDec">−</button>
+                            <span class="qty" id="qvQty">1</span>
+                            <button id="qvQtyInc">+</button>
+                        </div>
+                    </div>
+                    <button class="qv-add-btn" id="qvAddBtn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SCROLL TOP ===== -->
+    <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+
+    <script>
+        // ============================================================
+        // ALL PRODUCTS — Complete data with unique images
+        // ============================================================
+        var allProducts = [
+            // ===== SOLAR (20 products) =====
+            { id: 'p1', name: 'Solar Panel 250W', category: 'Solar', price: 16500, rating: 4.5, reviews: 45, image: 'img/solar-panel-250w.jpg', desc: 'High-efficiency monocrystalline solar panel with durable aluminum frame.' },
+            { id: 'p2', name: 'Solar Inverter 5kW', category: 'Solar', price: 125000, rating: 4.7, reviews: 32, image: 'img/solar.inverter.jpg', desc: 'Advanced hybrid inverter with MPPT technology for maximum efficiency.' },
+            { id: 'p3', name: 'Deep Cycle Battery 200Ah', category: 'Solar', price: 52500, rating: 4.6, reviews: 28, image: 'img/deepcycle-battery.jpg', desc: 'Deep cycle solar battery with long life and high capacity.' },
+            { id: 'p4', name: 'MPPT Charge Controller 40A', category: 'Solar', price: 18500, rating: 4.8, reviews: 39, image: 'img/change-controller.jpg', desc: 'Advanced MPPT charge controller that maximizes solar panel efficiency.' },
+            { id: 'p5', name: 'Solar Flood Light 50W', category: 'Solar', price: 7500, rating: 4.4, reviews: 22, image: 'img/flood-light.jpg', desc: 'Bright solar flood light with motion sensor and remote control.' },
+            { id: 'p6', name: 'Solar Panel Mounting Kit', category: 'Solar', price: 8500, rating: 4.3, reviews: 18, image: 'img/mounting-kit.jpg', desc: 'Complete mounting kit for solar panels. Includes rails, clamps, and hardware.' },
+            { id: 'p7', name: 'Solar Cable 10m', category: 'Solar', price: 1450, rating: 4.2, reviews: 15, image: 'img/solar-cable.jpg', desc: 'High-quality solar cable with UV protection and durable insulation.' },
+            { id: 'p8', name: 'Solar Fuse Box', category: 'Solar', price: 2650, rating: 4.6, reviews: 25, image: 'img/fuse-book.jpg', desc: 'Weatherproof solar fuse box with built-in surge protection.' },
+            { id: 'p9', name: 'Solar Charge Controller 30A', category: 'Solar', price: 4250, rating: 4.5, reviews: 31, image: 'img/charge-controller.jpg', desc: 'PWM charge controller for efficient battery charging and protection.' },
+            { id: 'p10', name: 'Solar Panel 400W', category: 'Solar', price: 18500, rating: 4.9, reviews: 56, image: 'img/panel-400w.jpg', desc: 'High-power monocrystalline solar panel for larger energy needs.' },
+            { id: 'p11', name: 'Solar Inverter 3kW', category: 'Solar', price: 58500, rating: 4.7, reviews: 42, image: 'img/inverter-3kw.jpg', desc: 'Pure sine wave solar inverter for home and office use.' },
+            { id: 'p12', name: 'Solar Battery 150Ah', category: 'Solar', price: 28500, rating: 4.4, reviews: 19, image: 'img/battery-150ah.jpg', desc: 'Reliable deep cycle battery for solar storage and backup power.' },
+            { id: 'p13', name: 'Solar Street Light', category: 'Solar', price: 16999, rating: 4.8, reviews: 47, image: 'img/light.jpg', desc: 'High-brightness solar street light with automatic dusk-to-dawn operation.' },
+            { id: 'p14', name: 'Solar Water Pump', category: 'Solar', price: 48999, rating: 4.6, reviews: 34, image: 'img/waterpump.jpg', desc: 'Efficient solar water pump for irrigation and water supply systems.' },
+            { id: 'p15', name: 'Solar Fan', category: 'Solar', price: 8999, rating: 4.3, reviews: 12, image: 'img/solarfan.jpg', desc: 'Energy-efficient solar fan for ventilation and cooling applications.' },
+            { id: 'p16', name: 'Solar Refrigerator', category: 'Solar', price: 89999, rating: 4.7, reviews: 29, image: 'img/refrigerator.jpg', desc: 'DC solar refrigerator for off-grid cooling and food storage.' },
+            { id: 'p17', name: 'Solar AC Unit', category: 'Solar', price: 235000, rating: 4.9, reviews: 38, image: 'img/acunit.jpg', desc: 'High-efficiency solar air conditioner for energy-saving cooling.' },
+            { id: 'p18', name: 'Solar Generator', category: 'Solar', price: 49999, rating: 4.6, reviews: 27, image: 'img/generator.jpg', desc: 'Portable solar generator for emergency power and outdoor use.' },
+            { id: 'p19', name: 'Solar Panel Cleaning Kit', category: 'Solar', price: 5500, rating: 4.2, reviews: 14, image: 'img/cleaningkit.jpg', desc: 'Complete cleaning kit with soft brush and eco-friendly solution.' },
+            { id: 'p20', name: 'Solar Extension Cable', category: 'Solar', price: 180, rating: 4.1, reviews: 9, image: 'img/extensioncable.jpg', desc: 'Extension cable for connecting solar panels and inverters.' },
+
+            // ===== ELECTRICAL (20 products) =====
+            { id: 'p21', name: 'LED Bulb 9W', category: 'Electrical', price: 280, rating: 4.6, reviews: 89, image: 'img/ledbulb.jpg', desc: 'Energy-efficient LED bulb with warm white light. Saves up to 80% energy.' },
+            { id: 'p22', name: 'Ceiling Fan 48"', category: 'Electrical', price: 6750, rating: 4.7, reviews: 56, image: 'img/ceilingfan.jpg', desc: 'Premium ceiling fan with high airflow and silent operation.' },
+            { id: 'p23', name: 'Switch Board 6 Module', category: 'Electrical', price: 650, rating: 4.6, reviews: 112, image: 'img/switchboard.jpg', desc: 'Modern switch board with 6 modules and premium safety features.' },
+            { id: 'p24', name: 'Copper Wire 2.5mm', category: 'Electrical', price: 4250, rating: 4.7, reviews: 167, image: 'img/copper-wire.jpg', desc: 'High-quality copper wire cable with PVC insulation.' },
+            { id: 'p25', name: 'Smart Bulb RGB', category: 'Electrical', price: 1450, rating: 4.5, reviews: 33, image: 'img/wifi-smartblub.jpg', desc: 'Smart LED bulb with WiFi connectivity. Control from your smartphone.' },
+            { id: 'p26', name: 'Smart Power Strip', category: 'Electrical', price: 3225, rating: 4.4, reviews: 28, image: 'img/smartpowerstrip.jpg', desc: 'Smart power strip with 6 outlets and surge protection. Control devices remotely.' },
+            { id: 'p27', name: 'Voltage Stabilizer', category: 'Electrical', price: 12500, rating: 4.6, reviews: 48, image: 'img/voltage-stablizers.jpg', desc: 'Automatic voltage stabilizer for home appliances.' },
+            { id: 'p28', name: 'Extension Cord 10m', category: 'Electrical', price: 750, rating: 4.3, reviews: 52, image: 'img/extension-cord.jpg', desc: '10-meter heavy duty extension cord with surge protection.' },
+            { id: 'p29', name: 'Wall Socket 5A', category: 'Electrical', price: 250, rating: 4.2, reviews: 43, image: 'img/wall-socket.jpg', desc: 'Premium wall socket with safety shutters and durable build.' },
+            { id: 'p30', name: 'MCB 16A', category: 'Electrical', price: 450, rating: 4.8, reviews: 94, image: 'img/mcb16a.jpg', desc: 'Miniature circuit breaker for electrical protection and safety.' },
+            { id: 'p31', name: 'Distribution Board', category: 'Electrical', price: 18500, rating: 4.5, reviews: 37, image: 'img/distributionboard.jpg', desc: 'Complete distribution board with 8 modules and neutral bar.' },
+            { id: 'p32', name: 'Cable Tray', category: 'Electrical', price: 6500, rating: 4.3, reviews: 21, image: 'img/cabletray.jpg', desc: 'Durable cable tray for organized cable management and safety.' },
+            { id: 'p33', name: 'Conduit Pipe', category: 'Electrical', price: 350, rating: 4.1, reviews: 16, image: 'img/conduit-pipe.jpg', desc: 'PVC conduit pipe for safe and protected wiring installation.' },
+            { id: 'p34', name: 'Electrical Tape', category: 'Electrical', price: 60, rating: 4.4, reviews: 78, image: 'img/electrical-tape.jpg', desc: 'High-quality electrical tape with strong adhesive and insulation.' },
+            { id: 'p35', name: 'Wire Connector', category: 'Electrical', price: 25, rating: 4.3, reviews: 62, image: 'img/wire-connector.jpg', desc: 'Durable wire connector for secure electrical connections.' },
+            { id: 'p36', name: 'Surge Protector', category: 'Electrical', price: 950, rating: 4.6, reviews: 45, image: 'img/surge.jpg', desc: 'Advanced surge protector for electronic devices and appliances.' },
+            { id: 'p37', name: 'Timer Switch', category: 'Electrical', price: 1150, rating: 4.4, reviews: 31, image: 'img/timerswitch.jpg', desc: 'Digital timer switch for automated lighting and appliance control.' },
+            { id: 'p38', name: 'Motion Sensor', category: 'Electrical', price: 1050, rating: 4.5, reviews: 27, image: 'img/motionsensor.jpg', desc: 'PIR motion sensor for automatic lighting and security systems.' },
+            { id: 'p39', name: 'Door Bell', category: 'Electrical', price: 1250, rating: 4.3, reviews: 19, image: 'img/doorbell.jpg', desc: 'Wireless doorbell with chime and adjustable volume settings.' },
+            { id: 'p40', name: 'Intercom System', category: 'Electrical', price: 8950, rating: 4.6, reviews: 14, image: 'img/intercom.jpg', desc: 'Two-way intercom system with clear audio and long range.' },
+
+            // ===== HARDWARE (20 products) =====
+            { id: 'p41', name: 'Fiberglass Hammer', category: 'Hardware', price: 750, rating: 4.5, reviews: 42, image: 'img/fiberglass.jpg', desc: 'Durable fiberglass hammer with anti-slip grip.' },
+            { id: 'p42', name: 'Heavy Duty Drill 13mm', category: 'Hardware', price: 4250, rating: 4.8, reviews: 94, image: 'img/heavyduty.jpg', desc: 'Powerful drill machine with 13mm chuck and variable speed control.' },
+            { id: 'p43', name: 'Wrench Set 8-24mm', category: 'Hardware', price: 2650, rating: 4.6, reviews: 87, image: 'img/wrechset.jpg', desc: 'Complete wrench set from 8mm to 24mm. Chrome vanadium steel.' },
+            { id: 'p44', name: 'Tool Kit 25pc', category: 'Hardware', price: 2450, rating: 4.6, reviews: 41, image: 'img/toolkit.jpg', desc: 'Complete tool kit with 25 essential pieces for every project.' },
+            { id: 'p45', name: 'Screwdriver Set 6pc', category: 'Hardware', price: 850, rating: 4.4, reviews: 38, image: 'img/screwdriver.jpg', desc: '6-piece screwdriver set with magnetic tips and comfortable handles.' },
+            { id: 'p46', name: 'Measuring Tape 25ft', category: 'Hardware', price: 450, rating: 4.3, reviews: 25, image: 'img/measuring.jpg', desc: '25ft heavy duty measuring tape with double-sided markings.' },
+            { id: 'p47', name: 'Pliers Set', category: 'Hardware', price: 1750, rating: 4.5, reviews: 33, image: 'img/pliersset.jpg', desc: '3-piece pliers set with comfort grip handles and precision tips.' },
+            { id: 'p48', name: 'Allen Key Set', category: 'Hardware', price: 550, rating: 4.4, reviews: 29, image: 'img/allenkey.jpg', desc: 'Complete allen key set in sizes 1.5mm to 10mm in durable case.' },
+            { id: 'p49', name: 'Spirit Level', category: 'Hardware', price: 1250, rating: 4.2, reviews: 22, image: 'img/spirtlevel.jpg', desc: 'Professional spirit level with accuracy of 0.5mm per meter.' },
+            { id: 'p50', name: 'Hacksaw Frame', category: 'Hardware', price: 650, rating: 4.3, reviews: 17, image: 'img/hacksawframe.jpg', desc: 'Adjustable hacksaw frame with comfortable grip and quick blade change.' },
+            { id: 'p51', name: 'Chisel Set', category: 'Hardware', price: 1250, rating: 4.6, reviews: 31, image: 'img/chiselset.jpg', desc: '6-piece chisel set with hardened steel blades and wooden handles.' },
+            { id: 'p52', name: 'File Set', category: 'Hardware', price: 1250, rating: 4.4, reviews: 26, image: 'img/fileset.jpg', desc: '5-piece file set with ergonomic handles and precision cutting teeth.' },
+            { id: 'p53', name: 'Clamp Set', category: 'Hardware', price: 1650, rating: 4.3, reviews: 19, image: 'img/clampset.jpg', desc: '4-piece clamp set with quick release and adjustable jaws.' },
+            { id: 'p54', name: 'Socket Set', category: 'Hardware', price: 2725, rating: 4.7, reviews: 43, image: 'img/socketset.jpg', desc: 'Complete socket set in sturdy case with 21 pieces and ratchet handle.' },
+            { id: 'p55', name: 'Ratchet Wrench', category: 'Hardware', price: 1350, rating: 4.5, reviews: 37, image: 'img/ratched.jpg', desc: 'Professional ratchet wrench with fine tooth mechanism and chrome finish.' },
+            { id: 'p56', name: 'Pipe Bender', category: 'Hardware', price: 2450, rating: 4.2, reviews: 14, image: 'img/pipebender.jpg', desc: 'Pipe bender for precise bending of copper and aluminum pipes.' },
+            { id: 'p57', name: 'Wire Stripper', category: 'Hardware', price: 850, rating: 4.4, reviews: 28, image: 'img/wirestripper.jpg', desc: 'Adjustable wire stripper with cutting and crimping functionality.' },
+            { id: 'p58', name: 'Crimping Tool', category: 'Hardware', price: 1550, rating: 4.5, reviews: 33, image: 'img/crimping.jpg', desc: 'Heavy-duty crimping tool with interchangeable dies for various sizes.' },
+            { id: 'p59', name: 'Torx Set', category: 'Hardware', price: 1250, rating: 4.3, reviews: 21, image: 'img/torx.jpg', desc: 'Complete torx set with sizes T5 to T40 in durable storage case.' },
+            { id: 'p60', name: 'Hex Key Set', category: 'Hardware', price: 650, rating: 4.2, reviews: 18, image: 'img/hex.jpg', desc: 'Ball-end hex key set with ergonomic holder and color-coded keys.' },
+
+            // ===== PLUMBING (20 products) =====
+            { id: 'p61', name: 'Brass Chrome Water Tap', category: 'Plumbing', price: 1250, rating: 4.4, reviews: 38, image: 'img/watertap.jpg', desc: 'Premium brass water tap with chrome finish and drip-free cartridge.' },
+            { id: 'p62', name: 'PVC Pipe Fitting Set', category: 'Plumbing', price: 2450, rating: 4.3, reviews: 76, image: 'img/pvc-pipe.jpg', desc: 'Complete PVC pipe fitting set with various connectors and adapters.' },
+            { id: 'p63', name: 'Rainfall Shower Head', category: 'Plumbing', price: 2450, rating: 4.7, reviews: 104, image: 'img/rainfall-shower.jpg', desc: 'Premium rainfall shower head with wide coverage and easy installation.' },
+            { id: 'p64', name: 'Storage Water Heater 50L', category: 'Plumbing', price: 17500, rating: 4.5, reviews: 37, image: 'img/waterheater.jpg', desc: 'Energy-efficient storage water heater with fast heating and stainless steel tank.' },
+            { id: 'p65', name: 'Plumber Pipe Wrench', category: 'Plumbing', price: 1450, rating: 4.2, reviews: 29, image: 'img/pipe-wrench.jpg', desc: 'Heavy-duty pipe wrench with adjustable jaw and comfortable grip.' },
+            { id: 'p66', name: 'Kitchen Sink Drain Kit', category: 'Plumbing', price: 1450, rating: 4.1, reviews: 22, image: 'img/sink.jpg', desc: 'Complete kitchen sink drain kit with strainer, trap, and mounting hardware.' },
+            { id: 'p67', name: 'Ball Valve 1"', category: 'Plumbing', price: 1250, rating: 4.6, reviews: 45, image: 'img/ball.jpg', desc: 'Premium brass ball valve with easy quarter-turn operation.' },
+            { id: 'p68', name: 'Flexible Hose 1m', category: 'Plumbing', price: 450, rating: 4.3, reviews: 51, image: 'img/flexible.jpg', desc: 'Flexible stainless steel hose with durable brass connectors.' },
+            { id: 'p69', name: 'Angle Stop Valve', category: 'Plumbing', price: 650, rating: 4.4, reviews: 34, image: 'img/angle.jpg', desc: 'Angle stop valve with quarter-turn operation and chrome finish.' },
+            { id: 'p70', name: 'Sink Mixer Tap', category: 'Plumbing', price: 3250, rating: 4.6, reviews: 42, image: 'img/sinkmixer.jpg', desc: 'Modern sink mixer tap with dual handles and high-arc spout.' },
+            { id: 'p71', name: 'Shower Set', category: 'Plumbing', price: 14500, rating: 4.7, reviews: 38, image: 'img/showerset.jpg', desc: 'Complete shower set with thermostatic valve and rain shower head.' },
+            { id: 'p72', name: 'Bathroom Accessory Kit', category: 'Plumbing', price: 4950, rating: 4.3, reviews: 17, image: 'img/bathroomkit.jpg', desc: 'Complete bathroom accessory kit with towel rail and soap dispenser.' },
+            { id: 'p73', name: 'Water Filter', category: 'Plumbing', price: 18500, rating: 4.8, reviews: 55, image: 'img/waterfilter.jpg', desc: 'Advanced water filter for clean and safe drinking water.' },
+            { id: 'p74', name: 'Pressure Pump', category: 'Plumbing', price: 12500, rating: 4.6, reviews: 28, image: 'img/pressure.jpg', desc: 'Automatic pressure pump for consistent water pressure in homes.' },
+            { id: 'p75', name: 'Pipe Cutter', category: 'Plumbing', price: 1450, rating: 4.4, reviews: 23, image: 'img/pipecutter.jpg', desc: 'Professional pipe cutter with sharp blade and easy adjustment.' },
+            { id: 'p76', name: 'Thread Seal Tape', category: 'Plumbing', price: 150, rating: 4.5, reviews: 87, image: 'img/sealtape.jpg', desc: 'High-quality PTFE thread seal tape for leak-proof connections.' },
+            { id: 'p77', name: 'Drain Snake', category: 'Plumbing', price: 2450, rating: 4.3, reviews: 19, image: 'img/drain.jpg', desc: 'Flexible drain snake for clearing clogs in pipes and drains.' },
+            { id: 'p78', name: 'Plunger', category: 'Plumbing', price: 299, rating: 4.2, reviews: 31, image: 'img/plunger.jpg', desc: 'Heavy-duty plunger with comfortable handle and strong suction.' },
+            { id: 'p79', name: 'Toilet Repair Kit', category: 'Plumbing', price: 2450, rating: 4.4, reviews: 26, image: 'img/toilet.jpg', desc: 'Complete toilet repair kit with flapper, fill valve, and hardware.' },
+            { id: 'p80', name: 'Faucet Aerator', category: 'Plumbing', price: 350, rating: 4.3, reviews: 44, image: 'img/faucet.jpg', desc: 'Water-saving faucet aerator with easy installation and flow control.' },
+
+            // ===== HOME ESSENTIALS (20 products) =====
+            { id: 'p81', name: 'Extension Cord Heavy Duty', category: 'Home Essentials', price: 4250, rating: 4.3, reviews: 52, image: 'img/heavyduty.jpg', desc: '10-meter heavy duty extension cord with surge protection.' },
+            { id: 'p82', name: 'Voltage Stabilizer 2000W', category: 'Home Essentials', price: 12500, rating: 4.6, reviews: 48, image: 'img/voltage-stablizers.jpg', desc: 'Automatic voltage stabilizer for home appliances.' },
+            { id: 'p83', name: 'Emergency LED Light', category: 'Home Essentials', price: 1450, rating: 4.4, reviews: 61, image: 'img/emergency-ledlight.jpg', desc: 'Rechargeable emergency LED light with power bank functionality.' },
+            { id: 'p84', name: 'Smart Door Lock', category: 'Home Essentials', price: 18500, rating: 4.7, reviews: 33, image: 'img/smartlock.jpg', desc: 'Smart door lock with fingerprint, keypad, and remote control.' },
+            { id: 'p85', name: 'Cabinet Handle Set', category: 'Home Essentials', price: 1299, rating: 4.2, reviews: 27, image: 'img/handle.jpg', desc: 'Set of 10 premium kitchen cabinet handles with sleek design.' },
+            { id: 'p86', name: 'Wireless Smoke Detector', category: 'Home Essentials', price: 4500, rating: 4.8, reviews: 19, image: 'img/smoke.jpg', desc: 'Smart wireless smoke detector with smartphone alerts and long-lasting battery.' },
+            { id: 'p87', name: 'Power Bank 20000mAh', category: 'Home Essentials', price: 3500, rating: 4.5, reviews: 42, image: 'img/powerbank.jpg', desc: 'High-capacity power bank with fast charging for all devices.' },
+            { id: 'p88', name: 'USB Wall Charger', category: 'Home Essentials', price: 699, rating: 4.6, reviews: 37, image: 'img/usb.jpg', desc: 'USB wall charger with 4 ports and fast charging technology.' },
+            { id: 'p89', name: 'Multi Plug Adapter', category: 'Home Essentials', price: 1750, rating: 4.4, reviews: 43, image: 'img/plug.jpg', desc: 'Multi-plug adapter with surge protection and built-in USB ports.' },
+            { id: 'p90', name: 'Cable Organizer', category: 'Home Essentials', price: 450, rating: 4.2, reviews: 31, image: 'img/cable.jpg', desc: 'Cable organizer for managing wires and cables in home and office.' },
+            { id: 'p91', name: 'Desk Lamp LED', category: 'Home Essentials', price: 1499, rating: 4.3, reviews: 28, image: 'img/desk.jpg', desc: 'Adjustable LED desk lamp with touch control and color temperature.' },
+            { id: 'p92', name: 'Night Light', category: 'Home Essentials', price: 599, rating: 4.1, reviews: 35, image: 'img/night.jpg', desc: 'Automatic night light with warm glow and energy-efficient LED.' },
+            { id: 'p93', name: 'Air Purifier', category: 'Home Essentials', price: 24500, rating: 4.7, reviews: 24, image: 'img/air.jpg', desc: 'Air purifier with HEPA filter and smart sensor technology.' },
+            { id: 'p94', name: 'Humidifier', category: 'Home Essentials', price: 6999, rating: 4.5, reviews: 19, image: 'img/humidifier.jpg', desc: 'Ultrasonic humidifier with adjustable mist output and quiet operation.' },
+            { id: 'p95', name: 'Electric Kettle', category: 'Home Essentials', price: 2450, rating: 4.4, reviews: 33, image: 'img/kettle.jpg', desc: 'Stainless steel electric kettle with rapid boil and auto shut-off.' },
+            { id: 'p96', name: 'Toaster', category: 'Home Essentials', price: 4999, rating: 4.3, reviews: 27, image: 'img/toaster.jpg', desc: '2-slice toaster with adjustable browning and defrost function.' },
+            { id: 'p97', name: 'Blender', category: 'Home Essentials', price: 8999, rating: 4.6, reviews: 22, image: 'img/blender.jpg', desc: 'High-performance blender with 1200W motor and 6-blade system.' },
+            { id: 'p98', name: 'Vacuum Cleaner', category: 'Home Essentials', price: 14500, rating: 4.8, reviews: 31, image: 'img/vacuum.jpg', desc: 'Powerful cordless vacuum cleaner with HEPA filter and 40-min runtime.' },
+            { id: 'p99', name: 'Iron Box', category: 'Home Essentials', price: 2250, rating: 4.4, reviews: 26, image: 'img/iron.jpg', desc: 'Non-stick iron box with adjustable temperature and steam function.' },
+            { id: 'p100', name: 'Hair Dryer', category: 'Home Essentials', price: 2950, rating: 4.5, reviews: 29, image: 'img/dryer.jpg', desc: 'Professional hair dryer with ionic technology and 3 heat settings.' },
+
+            // ===== LIGHTING (20 products) =====
+            { id: 'p101', name: 'LED Panel Light 18W', category: 'Lighting', price: 1950, rating: 4.4, reviews: 34, image: 'img/ledpanel.jpg', desc: 'Energy-efficient LED panel light with 18W power and ultra-thin design.' },
+            { id: 'p102', name: 'Flood Light 100W', category: 'Lighting', price: 2650, rating: 4.6, reviews: 29, image: 'img/floodlight.jpg', desc: 'Bright 100W LED flood light with weatherproof housing and long life.' },
+            { id: 'p103', name: 'Street Light 50W', category: 'Lighting', price: 7500, rating: 4.7, reviews: 22, image: 'img/street50.jpg', desc: 'Durable 50W LED street light with integrated driver and high efficiency.' },
+            { id: 'p104', name: 'Garden Light Solar', category: 'Lighting', price: 1250, rating: 4.3, reviews: 18, image: 'img/garden.jpg', desc: 'Solar-powered garden light with automatic dusk-to-dawn sensor.' },
+            { id: 'p105', name: 'Chandelier LED', category: 'Lighting', price: 15500, rating: 4.8, reviews: 27, image: 'img/chandelier.jpg', desc: 'Elegant LED chandelier with crystal accents and dimmable warm light.' },
+            { id: 'p106', name: 'Wall Sconce', category: 'Lighting', price: 3200, rating: 4.4, reviews: 21, image: 'img/sconce.jpg', desc: 'Wall sconce with adjustable brightness and minimalist design.' },
+            { id: 'p107', name: 'Pendant Light', category: 'Lighting', price: 1799, rating: 4.5, reviews: 24, image: 'img/pendant.jpg', desc: 'Industrial-style pendant light with glass shade and adjustable height.' },
+            { id: 'p108', name: 'Track Light', category: 'Lighting', price: 3200, rating: 4.6, reviews: 19, image: 'img/track.jpg', desc: 'Adjustable track light with 3 LED heads and modern design.' },
+            { id: 'p109', name: 'Spotlight', category: 'Lighting', price: 2800, rating: 4.3, reviews: 16, image: 'img/spotilight.jpg', desc: 'LED spotlight with adjustable beam angle and high color rendering.' },
+            { id: 'p110', name: 'Rope Light', category: 'Lighting', price: 450, rating: 4.2, reviews: 14, image: 'img/rope.jpg', desc: 'Flexible LED rope light with RGB colors and remote control.' },
+            { id: 'p111', name: 'Strip Light RGB', category: 'Lighting', price: 1850, rating: 4.7, reviews: 33, image: 'img/rgb.jpg', desc: 'LED strip light with RGB colors and smart home compatibility.' },
+            { id: 'p112', name: 'Ceiling Light', category: 'Lighting', price: 3500, rating: 4.4, reviews: 28, image: 'img/ceilong.jpg', desc: 'Modern ceiling light with integrated LED and diffused illumination.' },
+            { id: 'p113', name: 'Bathroom Light', category: 'Lighting', price: 1450, rating: 4.5, reviews: 26, image: 'img/bathroom.jpg', desc: 'IP44-rated bathroom light with anti-fog and waterproof design.' },
+            { id: 'p114', name: 'Vanity Mirror Light', category: 'Lighting', price: 3200, rating: 4.6, reviews: 22, image: 'img/mirrorlight.jpg', desc: 'Makeup mirror light with color temperature and dimmer control.' },
+            { id: 'p115', name: 'Outdoor Wall Light', category: 'Lighting', price: 2650, rating: 4.4, reviews: 18, image: 'img/outdoor.jpg', desc: 'Weatherproof outdoor wall light with motion sensor and warm light.' },
+            { id: 'p116', name: 'Pathway Light', category: 'Lighting', price: 1350, rating: 4.2, reviews: 15, image: 'img/pathway.jpg', desc: 'Solar pathway light with warm glow and durable construction.' },
+            { id: 'p117', name: 'Deck Light', category: 'Lighting', price: 850, rating: 4.3, reviews: 17, image: 'img/deck.jpg', desc: 'Low-voltage deck light with warm LED and weather-resistant design.' },
+            { id: 'p118', name: 'Pool Light', category: 'Lighting', price: 1950, rating: 4.7, reviews: 14, image: 'img/pool.jpg', desc: 'Waterproof RGB pool light with remote control and color sync.' },
+            { id: 'p119', name: 'Emergency Exit Light', category: 'Lighting', price: 1850, rating: 4.5, reviews: 19, image: 'img/emergency.jpg', desc: 'Emergency exit light with 3-hour battery backup and clear signage.' },
+            { id: 'p120', name: 'Signage Light', category: 'Lighting', price: 3250, rating: 4.3, reviews: 13, image: 'img/signage.jpg', desc: 'LED signage light with high brightness and adjustable angle.' },
+
+            // ===== TOOLS (20 products) =====
+            { id: 'p121', name: 'Circular Saw 7"', category: 'Tools', price: 13999, rating: 4.8, reviews: 34, image: 'img/circular.jpg', desc: 'Powerful circular saw with 7-inch blade and laser guide.' },
+            { id: 'p122', name: 'Jigsaw 500W', category: 'Tools', price: 7250, rating: 4.6, reviews: 28, image: 'img/jigsaw.jpg', desc: '500W jigsaw with variable speed and orbital action for clean cuts.' },
+            { id: 'p123', name: 'Angle Grinder 4"', category: 'Tools', price: 650, rating: 4.7, reviews: 31, image: 'img/angle.jpg', desc: '4-inch angle grinder with powerful motor and tool-free guard adjustment.' },
+            { id: 'p124', name: 'Sander 400W', category: 'Tools', price: 6999, rating: 4.5, reviews: 24, image: 'img/sander.jpg', desc: '400W palm sander with dust extraction and variable speed control.' },
+            { id: 'p125', name: 'Router 1200W', category: 'Tools', price: 12999, rating: 4.7, reviews: 22, image: 'img/router.jpg', desc: '1200W router with variable speed and precise depth adjustment.' },
+            { id: 'p126', name: 'Planer 800W', category: 'Tools', price: 8250, rating: 4.6, reviews: 19, image: 'img/planer.jpg', desc: '800W electric planer with double-edge blades and dust bag.' },
+            { id: 'p127', name: 'Miter Saw 10"', category: 'Tools', price: 24500, rating: 4.9, reviews: 26, image: 'img/miter.jpg', desc: 'Professional 10-inch miter saw with slide compound and laser guide.' },
+            { id: 'p128', name: 'Table Saw 8"', category: 'Tools', price: 27999, rating: 4.8, reviews: 21, image: 'img/tablesaw.jpg', desc: 'Heavy-duty 8-inch table saw with stand and push stick.' },
+            { id: 'p129', name: 'Band Saw', category: 'Tools', price: 24999, rating: 4.6, reviews: 18, image: 'img/bandsaw.jpg', desc: 'Band saw with continuous blade and adjustable guide rollers.' },
+            { id: 'p130', name: 'Drill Press', category: 'Tools', price: 24999, rating: 4.7, reviews: 23, image: 'img/drillpress.jpg', desc: 'Drill press with cast iron base and adjustable depth stop.' },
+            { id: 'p131', name: 'Bench Grinder', category: 'Tools', price: 5499, rating: 4.5, reviews: 17, image: 'img/grinder.jpg', desc: 'Bench grinder with two grinding wheels and adjustable guards.' },
+            { id: 'p132', name: 'Welding Machine', category: 'Tools', price: 19999, rating: 4.8, reviews: 15, image: 'img/weldingmachine.jpg', desc: 'Inverter welding machine with digital display and MMA/TIG mode.' },
+            { id: 'p133', name: 'Compressor 50L', category: 'Tools', price: 23500, rating: 4.6, reviews: 20, image: 'img/compressor.jpg', desc: '50L air compressor with pressure regulator and oil-free pump.' },
+            { id: 'p134', name: 'Nail Gun', category: 'Tools', price: 13999, rating: 4.5, reviews: 22, image: 'img/nailgun.jpg', desc: 'Pneumatic nail gun with adjustable depth and grip handle.' },
+            { id: 'p135', name: 'Stapler', category: 'Tools', price: 1299, rating: 4.3, reviews: 18, image: 'img/stapler.jpg', desc: 'Heavy-duty stapler with jam-free mechanism and durable build.' },
+            { id: 'p136', name: 'Glue Gun', category: 'Tools', price: 1250, rating: 4.4, reviews: 25, image: 'img/gluegun.jpg', desc: 'Glue gun with adjustable temperature and 10-second heat-up.' },
+            { id: 'p137', name: 'Heat Gun', category: 'Tools', price: 450, rating: 4.5, reviews: 20, image: 'img/heatgun.jpg', desc: 'Heat gun with 2-speed control and overheat protection.' },
+            { id: 'p138', name: 'Multimeter', category: 'Tools', price: 2499, rating: 4.8, reviews: 33, image: 'img/multimeter.jpg', desc: 'Professional multimeter with true RMS and auto-ranging.' },
+            { id: 'p139', name: 'Clamp Meter', category: 'Tools', price: 4750, rating: 4.7, reviews: 28, image: 'img/clamp.jpg', desc: 'Clamp meter with AC/DC measurement and backlight display.' },
+            { id: 'p140', name: 'Laser Level', category: 'Tools', price: 18500, rating: 4.6, reviews: 24, image: 'img/laser.jpg', desc: 'Laser level with self-leveling function and visible green laser.' },
+
+            // ===== SAFETY (20 products) =====
+            { id: 'p141', name: 'Fire Extinguisher 2kg', category: 'Safety', price: 5999, rating: 4.8, reviews: 43, image: 'img/fire.jpg', desc: 'Dry powder fire extinguisher for A/B/C class fires.' },
+            { id: 'p142', name: 'First Aid Kit', category: 'Safety', price: 1000, rating: 4.6, reviews: 37, image: 'img/aidkit.jpg', desc: 'Complete first aid kit with 50 pieces for emergency care.' },
+            { id: 'p143', name: 'Safety Helmet', category: 'Safety', price: 1150, rating: 4.4, reviews: 41, image: 'img/helmet.jpg', desc: 'Industrial safety helmet with adjustable harness and ventilation.' },
+            { id: 'p144', name: 'Safety Glasses', category: 'Safety', price: 1250, rating: 4.5, reviews: 38, image: 'img/glasses.jpg', desc: 'Anti-fog safety glasses with UV protection and scratch-resistant lens.' },
+            { id: 'p145', name: 'Ear Muffs', category: 'Safety', price: 1350, rating: 4.3, reviews: 34, image: 'img/ear.jpg', desc: 'Ear muffs with high NRR rating and comfortable headband.' },
+            { id: 'p146', name: 'Dust Mask N95', category: 'Safety', price: 1500, rating: 4.6, reviews: 56, image: 'img/mast.jpg', desc: 'N95 dust mask with adjustable nose clip and comfortable fit.' },
+            { id: 'p147', name: 'Gloves Heavy Duty', category: 'Safety', price: 1600, rating: 4.4, reviews: 29, image: 'img/gloves.jpg', desc: 'Heavy-duty gloves with cut resistance and non-slip grip.' },
+            { id: 'p148', name: 'Safety Harness', category: 'Safety', price: 1750, rating: 4.7, reviews: 22, image: 'img/safety.jpg', desc: 'Full-body safety harness with double lanyard and shock-absorbing.' },
+            { id: 'p149', name: 'Reflective Vest', category: 'Safety', price: 750, rating: 4.3, reviews: 27, image: 'img/vest.jpg', desc: 'High-visibility reflective vest with adjustable straps.' },
+            { id: 'p150', name: 'Safety Boots', category: 'Safety', price: 3250, rating: 4.6, reviews: 24, image: 'img/safety.jpg', desc: 'Steel-toe safety boots with slip-resistant sole and comfort insole.' },
+            { id: 'p151', name: 'Knee Pads', category: 'Safety', price: 1450, rating: 4.4, reviews: 31, image: 'img/kneepads.jpg', desc: 'Gel knee pads with non-slip grip and adjustable straps.' },
+            { id: 'p152', name: 'Elbow Pads', category: 'Safety', price: 950, rating: 4.3, reviews: 22, image: 'img/elbow.jpg', desc: 'Elbow pads with protective shell and comfortable padding.' },
+            { id: 'p153', name: 'Face Shield', category: 'Safety', price: 450, rating: 4.5, reviews: 18, image: 'img/face.jpg', desc: 'Full-face shield with anti-fog lens and adjustable headgear.' },
+            { id: 'p154', name: 'Welding Helmet', category: 'Safety', price: 3750, rating: 4.8, reviews: 20, image: 'img/wel.jpg', desc: 'Auto-darkening welding helmet with solar-powered technology.' },
+            { id: 'p155', name: 'Gas Detector', category: 'Safety', price: 2450, rating: 4.7, reviews: 16, image: 'img/gas.jpg', desc: 'Gas leak detector for combustible gases with audible alarm.' },
+            { id: 'p156', name: 'Smoke Alarm', category: 'Safety', price: 2350, rating: 4.8, reviews: 29, image: 'img/smoke.jpg', desc: 'Wireless smoke alarm with voice alert and smartphone notifications.' },
+            { id: 'p157', name: 'Carbon Monoxide Detector', category: 'Safety', price: 2450, rating: 4.6, reviews: 25, image: 'img/carbonmono.jpg', desc: 'CO detector with digital display and silent operation mode.' },
+            { id: 'p158', name: 'Emergency Whistle', category: 'Safety', price: 499, rating: 4.2, reviews: 14, image: 'img/whistle.jpg', desc: 'Emergency whistle with 120dB sound and durable construction.' },
+            { id: 'p159', name: 'Survival Kit', category: 'Safety', price: 3250, rating: 4.7, reviews: 21, image: 'img/survival.jpg', desc: 'Complete survival kit with 50+ items for emergency preparedness.' },
+            { id: 'p160', name: 'Fire Blanket', category: 'Safety', price: 1499, rating: 4.5, reviews: 18, image: 'img/blanket.jpg', desc: 'Fire blanket for emergencies with smooth fabric and easy pull.' }
+        ];
+
+        // ============================================================
+        // HELPERS
+        // ============================================================
+        function getProduct(id) {
+            for (var i = 0; i < allProducts.length; i++) {
+                if (allProducts[i].id === id) return allProducts[i];
+            }
+            return null;
+        }
+
+        function formatCurrency(amount) {
+            return 'PKR ' + amount.toLocaleString('en-PK');
+        }
+
+        // ============================================================
+        // CART — localStorage
+        // ============================================================
+        var cart = JSON.parse(localStorage.getItem('powerhub_cart')) || [];
+
+        function saveCart() {
+            localStorage.setItem('powerhub_cart', JSON.stringify(cart));
+            updateCartBadge();
+            renderCart();
+        }
+
+        function updateCartBadge() {
+            var count = 0;
+            for (var i = 0; i < cart.length; i++) count += cart[i].qty;
+            var badge = document.getElementById('cartBadge');
+            if (badge) badge.textContent = count;
+        }
+
+        function addToCart(productId, qty) {
+            qty = qty || 1;
+            var existing = null;
+            for (var i = 0; i < cart.length; i++) {
+                if (cart[i].id === productId) { existing = cart[i]; break; }
+            }
+            if (existing) {
+                existing.qty += qty;
+            } else {
+                var product = getProduct(productId);
+                if (!product) return;
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    category: product.category,
+                    price: product.price,
+                    rating: product.rating,
+                    reviews: product.reviews,
+                    image: product.image,
+                    desc: product.desc,
+                    qty: qty
+                });
+            }
+            saveCart();
+            var btns = document.querySelectorAll('.add-cart[data-id="' + productId + '"]');
+            for (var j = 0; j < btns.length; j++) {
+                var btn = btns[j];
+                btn.classList.add('added');
+                btn.innerHTML = '<i class="fas fa-check"></i> Added';
+                setTimeout(function(b) {
+                    b.classList.remove('added');
+                    b.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+                }, 1500, btn);
+            }
+        }
+
+        function removeFromCart(productId) {
+            var newCart = [];
+            for (var i = 0; i < cart.length; i++) {
+                if (cart[i].id !== productId) newCart.push(cart[i]);
+            }
+            cart = newCart;
+            saveCart();
+        }
+
+        function updateQty(productId, delta) {
+            var item = null;
+            for (var i = 0; i < cart.length; i++) {
+                if (cart[i].id === productId) { item = cart[i]; break; }
+            }
+            if (!item) return;
+            item.qty += delta;
+            if (item.qty <= 0) {
+                removeFromCart(productId);
+            } else {
+                saveCart();
+            }
+        }
+
+        function getCartTotal() {
+            var total = 0;
+            for (var i = 0; i < cart.length; i++) total += cart[i].price * cart[i].qty;
+            return total;
+        }
+
+        // ============================================================
+        // RENDER CART
+        // ============================================================
+        function renderCart() {
+            var body = document.getElementById('cartBody');
+            var footer = document.getElementById('cartFooter');
+            var subtotal = document.getElementById('cartSubtotal');
+
+            if (!body) return;
+
+            if (cart.length === 0) {
+                body.innerHTML =
+                    '<div class="empty-msg"><i class="fas fa-cart-plus"></i><p>Your cart is empty.</p><p style="font-size:0.85rem;">Start shopping to add items.</p></div>';
+                if (footer) footer.style.display = 'none';
+                return;
+            }
+
+            var html = '';
+            for (var i = 0; i < cart.length; i++) {
+                var item = cart[i];
+                html += '<div class="cart-item" data-id="' + item.id + '">';
+                html += '<img src="' + item.image + '" alt="' + item.name + '" loading="lazy" />';
+                html += '<div class="info">';
+                html += '<div class="name">' + item.name + '</div>';
+                html += '<div class="price">' + formatCurrency(item.price) + '</div>';
+                html += '<div class="qty-control">';
+                html += '<button class="cart-qty-dec" data-id="' + item.id + '">−</button>';
+                html += '<span class="qty">' + item.qty + '</span>';
+                html += '<button class="cart-qty-inc" data-id="' + item.id + '">+</button>';
+                html += '</div></div>';
+                html += '<button class="remove-btn cart-remove" data-id="' + item.id + '"><i class="fas fa-trash-alt"></i></button>';
+                html += '</div>';
+            }
+            body.innerHTML = html;
+            if (footer) footer.style.display = 'block';
+            if (subtotal) subtotal.textContent = formatCurrency(getCartTotal());
+
+            var decs = document.querySelectorAll('.cart-qty-dec');
+            for (var j = 0; j < decs.length; j++) {
+                decs[j].addEventListener('click', function() { updateQty(this.dataset.id, -1); });
+            }
+            var incs = document.querySelectorAll('.cart-qty-inc');
+            for (var k = 0; k < incs.length; k++) {
+                incs[k].addEventListener('click', function() { updateQty(this.dataset.id, 1); });
+            }
+            var removes = document.querySelectorAll('.cart-remove');
+            for (var l = 0; l < removes.length; l++) {
+                removes[l].addEventListener('click', function() { removeFromCart(this.dataset.id); });
+            }
+        }
+
+        // ============================================================
+        // PRODUCT LIST — pagination, filtering, sorting
+        // ============================================================
+        var currentPage = 1;
+        var perPage = 24;
+        var currentFilter = 'all';
+        var currentSort = 'default';
+        var filteredProducts = allProducts.slice();
+
+        function renderProductGrid() {
+            var grid = document.getElementById('productsGrid');
+            if (!grid) return;
+
+            var start = (currentPage - 1) * perPage;
+            var end = start + perPage;
+            var pageItems = filteredProducts.slice(start, end);
+
+            if (pageItems.length === 0) {
+                grid.innerHTML =
+                    '<p style="text-align:center;padding:60px 0;color:var(--text-light);grid-column:1/-1;font-size:1.1rem;">No products found matching your criteria.</p>';
+                document.getElementById('pagination').innerHTML = '';
+                document.getElementById('resultCount').textContent = '0 products';
+                return;
+            }
+
+            var html = '';
+            for (var i = 0; i < pageItems.length; i++) {
+                var p = pageItems[i];
+                var stars = '';
+                for (var s = 0; s < Math.floor(p.rating); s++) stars += '<i class="fas fa-star"></i>';
+                if (p.rating % 1 >= 0.5) stars += '<i class="fas fa-star-half-alt"></i>';
+
+                var slideClass = (i % 2 === 0) ? 'slide-left' : 'slide-right';
+
+                html += '<div class="product-card ' + slideClass + '" data-id="' + p.id + '">';
+                html += '<div class="image-wrap">';
+                html += '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy" />';
+                html += '<button class="quick-view-btn" data-id="' + p.id + '"><i class="fas fa-eye"></i> Quick View</button>';
+                html += '</div>';
+                html += '<div class="body">';
+                html += '<div class="category-tag">' + p.category + '</div>';
+                html += '<div class="product-name">' + p.name + '</div>';
+                html += '<div class="rating">' + stars + ' <span>(' + p.reviews + ')</span></div>';
+                html += '<div class="price">' + formatCurrency(p.price) + '</div>';
+                html += '<div class="actions">';
+                html += '<button class="add-cart" data-id="' + p.id + '"><i class="fas fa-cart-plus"></i> Add to Cart</button>';
+                html += '</div></div></div>';
+            }
+            grid.innerHTML = html;
+
+            var newSlideEls = grid.querySelectorAll('.slide-left, .slide-right');
+            for (var f = 0; f < newSlideEls.length; f++) {
+                newSlideEls[f].classList.add('visible');
+            }
+
+            var qvBtns = grid.querySelectorAll('.quick-view-btn');
+            for (var q = 0; q < qvBtns.length; q++) {
+                qvBtns[q].addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    openQuickView(this.dataset.id);
+                });
+            }
+            var cards = grid.querySelectorAll('.product-card');
+            for (var c = 0; c < cards.length; c++) {
+                cards[c].addEventListener('click', function() {
+                    if (this.dataset.id) openQuickView(this.dataset.id);
+                });
+            }
+            var addBtns = grid.querySelectorAll('.add-cart');
+            for (var a = 0; a < addBtns.length; a++) {
+                addBtns[a].addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    addToCart(this.dataset.id, 1);
+                });
+            }
+
+            document.getElementById('resultCount').textContent = filteredProducts.length + ' products';
+            renderPagination();
+        }
+
+        function renderPagination() {
+            var total = filteredProducts.length;
+            var totalPages = Math.ceil(total / perPage);
+            var pag = document.getElementById('pagination');
+            if (!pag) return;
+
+            if (totalPages <= 1) {
+                pag.innerHTML = '';
+                return;
+            }
+
+            var html = '';
+            html += '<button onclick="goToPage(' + (currentPage - 1) + ')" ' + (currentPage === 1 ? 'disabled' : '') +
+                '><i class="fas fa-chevron-left"></i></button>';
+
+            var startPage = Math.max(1, currentPage - 2);
+            var endPage = Math.min(totalPages, currentPage + 2);
+
+            if (startPage > 1) {
+                html += '<button onclick="goToPage(1)">1</button>';
+                if (startPage > 2) html += '<button disabled>…</button>';
+            }
+
+            for (var i = startPage; i <= endPage; i++) {
+                html += '<button onclick="goToPage(' + i + ')" class="' + (i === currentPage ? 'active' : '') + '">' + i +
+                '</button>';
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) html += '<button disabled>…</button>';
+                html += '<button onclick="goToPage(' + totalPages + ')">' + totalPages + '</button>';
+            }
+
+            html += '<button onclick="goToPage(' + (currentPage + 1) + ')" ' + (currentPage === totalPages ? 'disabled' : '') +
+                '><i class="fas fa-chevron-right"></i></button>';
+
+            pag.innerHTML = html;
+        }
+
+        function goToPage(page) {
+            var total = Math.ceil(filteredProducts.length / perPage);
+            if (page < 1 || page > total) return;
+            currentPage = page;
+            renderProductGrid();
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function applyFilters() {
+            var category = currentFilter;
+
+            if (category === 'all') {
+                filteredProducts = allProducts.slice();
+            } else {
+                filteredProducts = [];
+                for (var i = 0; i < allProducts.length; i++) {
+                    if (allProducts[i].category === category) {
+                        filteredProducts.push(allProducts[i]);
+                    }
+                }
+            }
+
+            var sort = document.getElementById('sortSelect') ? document.getElementById('sortSelect').value : 'default';
+            if (sort === 'price-low') {
+                filteredProducts.sort(function(a, b) { return a.price - b.price; });
+            } else if (sort === 'price-high') {
+                filteredProducts.sort(function(a, b) { return b.price - a.price; });
+            } else if (sort === 'rating') {
+                filteredProducts.sort(function(a, b) { return b.rating - a.rating; });
+            } else if (sort === 'name') {
+                filteredProducts.sort(function(a, b) { return a.name.localeCompare(b.name); });
+            } else {
+                filteredProducts.sort(function(a, b) { return parseInt(a.id.replace('p', '')) - parseInt(b.id.replace('p',
+                    '')); });
+            }
+
+            currentPage = 1;
+            renderProductGrid();
+        }
+
+        // ============================================================
+        // FILTER & SORT EVENT BINDING
+        // ============================================================
+        var filterBtns = document.querySelectorAll('#categoryFilters button');
+        for (var i = 0; i < filterBtns.length; i++) {
+            filterBtns[i].addEventListener('click', function() {
+                var filter = this.dataset.filter;
+                var btns = document.querySelectorAll('#categoryFilters button');
+                for (var b = 0; b < btns.length; b++) {
+                    btns[b].classList.remove('active');
+                }
+                this.classList.add('active');
+                currentFilter = filter;
+                applyFilters();
+            });
+        }
+
+        var sortSelect = document.getElementById('sortSelect');
+        if (sortSelect) {
+            sortSelect.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+
+        var footerCatLinks = document.querySelectorAll('[data-filter]');
+        for (var i = 0; i < footerCatLinks.length; i++) {
+            footerCatLinks[i].addEventListener('click', function(e) {
+                e.preventDefault();
+                var filter = this.dataset.filter;
+                var btns = document.querySelectorAll('#categoryFilters button');
+                for (var b = 0; b < btns.length; b++) {
+                    if (btns[b].dataset.filter === filter) {
+                        btns[b].click();
+                        break;
+                    }
+                }
+                document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                // Close mobile menu if open
+                closeMobileMenu();
+            });
+        }
+
+        // Mobile menu category links also need to trigger filter
+        var mobileCatLinks = document.querySelectorAll('.mobile-nav a[data-filter]');
+        for (var i = 0; i < mobileCatLinks.length; i++) {
+            mobileCatLinks[i].addEventListener('click', function(e) {
+                e.preventDefault();
+                var filter = this.dataset.filter;
+                var btns = document.querySelectorAll('#categoryFilters button');
+                for (var b = 0; b < btns.length; b++) {
+                    if (btns[b].dataset.filter === filter) {
+                        btns[b].click();
+                        break;
+                    }
+                }
+                document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                closeMobileMenu();
+            });
+        }
+
+        // ============================================================
+        // QUICK VIEW
+        // ============================================================
+        var qvCurrentProduct = null;
+
+        function openQuickView(id) {
+            var product = getProduct(id);
+            if (!product) return;
+            qvCurrentProduct = product;
+
+            var img = document.getElementById('qvImage');
+            img.src = product.image;
+
+            document.getElementById('qvName').textContent = product.name;
+            document.getElementById('qvPrice').textContent = formatCurrency(product.price);
+
+            var stars = '';
+            for (var s = 0; s < Math.floor(product.rating); s++) stars += '<i class="fas fa-star"></i>';
+            if (product.rating % 1 >= 0.5) stars += '<i class="fas fa-star-half-alt"></i>';
+            document.getElementById('qvRating').innerHTML = stars + ' ' + product.rating + ' (' + product.reviews + ')';
+            document.getElementById('qvAvailability').innerHTML = '<i class="fas fa-check-circle"></i> In Stock';
+            document.getElementById('qvDesc').textContent = product.desc;
+            document.getElementById('qvQty').textContent = 1;
+            document.getElementById('qvOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeQuickView() {
+            document.getElementById('qvOverlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('qvQtyDec').addEventListener('click', function() {
+            var el = document.getElementById('qvQty');
+            var val = parseInt(el.textContent);
+            if (val > 1) el.textContent = val - 1;
+        });
+        document.getElementById('qvQtyInc').addEventListener('click', function() {
+            var el = document.getElementById('qvQty');
+            var val = parseInt(el.textContent);
+            el.textContent = val + 1;
+        });
+        document.getElementById('qvAddBtn').addEventListener('click', function() {
+            if (!qvCurrentProduct) return;
+            var qty = parseInt(document.getElementById('qvQty').textContent);
+            addToCart(qvCurrentProduct.id, qty);
+            closeQuickView();
+            openCart();
+        });
+        document.getElementById('qvClose').addEventListener('click', closeQuickView);
+        document.getElementById('qvOverlay').addEventListener('click', function(e) {
+            if (e.target === e.currentTarget) closeQuickView();
+        });
+
+        // ============================================================
+        // CART DRAWER
+        // ============================================================
+        function openCart() {
+            document.getElementById('cartOverlay').classList.add('open');
+            document.getElementById('cartDrawer').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            renderCart();
+        }
+
+        function closeCart() {
+            document.getElementById('cartOverlay').classList.remove('open');
+            document.getElementById('cartDrawer').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('cartToggle').addEventListener('click', function() {
+            if (document.getElementById('cartDrawer').classList.contains('open')) {
+                closeCart();
+            } else {
+                openCart();
+            }
+        });
+        document.getElementById('cartOverlay').addEventListener('click', closeCart);
+        document.getElementById('cartClose').addEventListener('click', closeCart);
+        document.getElementById('cartContinue').addEventListener('click', closeCart);
+        document.getElementById('cartCheckout').addEventListener('click', function() {
+            if (cart.length === 0) return;
+            alert('✅ Thank you for your order! This is a demo checkout.');
+            closeCart();
+        });
+
+        // ============================================================
+        // MOBILE MENU TOGGLE (slide from right)
+        // ============================================================
+        var mobileMenu = document.getElementById('mobileMenu');
+        var mobileOverlay = document.getElementById('mobileMenuOverlay');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('open');
+            mobileOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            mobileOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('mobileToggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (mobileMenu.classList.contains('open')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        document.getElementById('mobileMenuClose').addEventListener('click', closeMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu when a nav link is clicked
+        var mobileNavLinks = document.querySelectorAll('.mobile-nav a:not([data-filter])');
+        for (var i = 0; i < mobileNavLinks.length; i++) {
+            mobileNavLinks[i].addEventListener('click', function() {
+                closeMobileMenu();
+            });
+        }
+
+        // ============================================================
+        // HEADER / SCROLL
+        // ============================================================
+        window.addEventListener('scroll', function() {
+            var header = document.getElementById('header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+
+            var st = document.getElementById('scrollTop');
+            if (window.scrollY > 400) st.classList.add('show');
+            else st.classList.remove('show');
+
+            var sections = ['hero', 'products', 'contact'];
+            var current = 'hero';
+            for (var i = 0; i < sections.length; i++) {
+                var el = document.getElementById(sections[i]);
+                if (el) {
+                    var rect = el.getBoundingClientRect();
+                    if (rect.top <= 150) current = sections[i];
+                }
+            }
+            var links = document.querySelectorAll('.nav a');
+            for (var j = 0; j < links.length; j++) {
+                var link = links[j];
+                var href = link.getAttribute('href');
+                if (href === '#' + current) link.classList.add('active');
+                else link.classList.remove('active');
+            }
+            // Also update mobile nav active state
+            var mobileLinks = document.querySelectorAll('.mobile-nav a');
+            for (var k = 0; k < mobileLinks.length; k++) {
+                var ml = mobileLinks[k];
+                var mHref = ml.getAttribute('href');
+                if (mHref === '#' + current) ml.classList.add('active');
+                else ml.classList.remove('active');
+            }
+        });
+
+        document.getElementById('shopNowBtn').addEventListener('click', function() {
+            window.location.href = 'product.html';
+        });
+
+        document.getElementById('scrollTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ============================================================
+        // SEARCH
+        // ============================================================
+        document.getElementById('searchToggle').addEventListener('click', function() {
+            var bar = document.getElementById('searchBar');
+            bar.classList.toggle('open');
+            if (bar.classList.contains('open')) document.getElementById('searchInput').focus();
+        });
+        document.getElementById('searchInput').addEventListener('input', function() {
+            var q = this.value.toLowerCase().trim();
+            var filtered = [];
+            for (var i = 0; i < allProducts.length; i++) {
+                var p = allProducts[i];
+                if (p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)) {
+                    filtered.push(p);
+                }
+            }
+            var btns = document.querySelectorAll('#categoryFilters button');
+            for (var b = 0; b < btns.length; b++) {
+                btns[b].classList.remove('active');
+                if (btns[b].dataset.filter === 'all') btns[b].classList.add('active');
+            }
+            currentFilter = 'all';
+            filteredProducts = filtered;
+            var sort = document.getElementById('sortSelect') ? document.getElementById('sortSelect').value : 'default';
+            if (sort === 'price-low') filteredProducts.sort(function(a, b) { return a.price - b.price; });
+            else if (sort === 'price-high') filteredProducts.sort(function(a, b) { return b.price - a.price; });
+            else if (sort === 'rating') filteredProducts.sort(function(a, b) { return b.rating - a.rating; });
+            else if (sort === 'name') filteredProducts.sort(function(a, b) { return a.name.localeCompare(b.name); });
+            currentPage = 1;
+            renderProductGrid();
+            document.getElementById('resultCount').textContent = filteredProducts.length + ' results';
+        });
+
+        // ============================================================
+        // FADE-UP / SLIDE OBSERVER
+        // ============================================================
+        var observer = new IntersectionObserver(function(entries) {
+            for (var i = 0; i < entries.length; i++) {
+                if (entries[i].isIntersecting) {
+                    entries[i].target.classList.add('visible');
+                }
+            }
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        var animatedEls = document.querySelectorAll('.fade-up, .slide-left, .slide-right');
+        for (var i = 0; i < animatedEls.length; i++) {
+            if (!animatedEls[i].closest('.product-card')) {
+                observer.observe(animatedEls[i]);
+            }
+        }
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        function init() {
+            applyFilters();
+            updateCartBadge();
+            renderCart();
+            console.log('✅ PowerHub product page initialized with unique images for each product.');
+            console.log('📦 Total products:', allProducts.length);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+</html>
